@@ -1,5 +1,7 @@
-import { View, Text, StyleSheet } from 'react-native'
-import React from 'react'
+import { View, Text, StyleSheet } from 'react-native';
+import React from 'react';
+
+import CallActionBox from '../../components/CallActionBox';
 
 const CallingScreen = () => {
   return (
@@ -9,23 +11,13 @@ const CallingScreen = () => {
             <Text style={styles.name}>Alex</Text>
             <Text style={styles.phoneNumber}>ringing +31 343 3232 5656</Text>
 
-            <View style={{flex: 1}}/>
-            <View style={styles.buttonsContainer}>
-                <Text> Icons</Text>
-            </View>
         </View>
+        <CallActionBox />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-    buttonsContainer: {
-        backgroundColor: '#333333',
-        borderTopLeftRadius: 15,
-        borderTopRightRadius: 15,
-        padding: 10,
-        width: '100%',
-    },
     cameraPreview: {
         alignItems: 'center',
         backgroundColor: '#7b4e80',
@@ -41,6 +33,7 @@ const styles = StyleSheet.create({
         marginTop: 50,
     },
     page: {
+        backgroundColor: '#7b4e80',
         height: '100%',
     },
     phoneNumber: {
