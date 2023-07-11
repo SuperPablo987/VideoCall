@@ -1,23 +1,43 @@
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Pressable } from 'react-native';
 import React from 'react';
+import Ionicons from '@expo/vector-icons/Ionicons';
+import { useNavigation, useRoute } from '@react-navigation/core';
 
 import CallActionBox from '../../components/CallActionBox';
 
 const CallingScreen = () => {
-  return (
-    <View style={styles.page}>
-        <View style={styles.cameraPreview}>
+    const navigation = useNavigation();
+    const route = useRoute();
 
-            <Text style={styles.name}>Alex</Text>
-            <Text style={styles.phoneNumber}>ringing +31 343 3232 5656</Text>
+    const user = route?.params?.user;
 
+    const goBack = () => {
+        navigation.goBack();
+    };
+
+    return (
+        <View style={styles.page}>
+            <Pressable onPress={goBack} style={styles.backButton}>
+                <Ionicons name='caret-back' color="white" size={30} />
+            </Pressable>
+            <View style={styles.cameraPreview}>
+
+                <Text style={styles.name}>{user?.user_display_name}</Text>
+                <Text style={styles.phoneNumber}>ringing +31 343 3232 5656</Text>
+
+            </View>
+            <CallActionBox />
         </View>
-        <CallActionBox />
-    </View>
-  );
+    );
 };
 
 const styles = StyleSheet.create({
+    backButton: {
+        left: 10,
+        position: "absolute",
+        top: 50,
+        zIndex: 10,
+    },
     cameraPreview: {
         alignItems: 'center',
         backgroundColor: '#7b4e80',

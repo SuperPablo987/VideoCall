@@ -14,19 +14,21 @@ const Stack = createStackNavigator();
 const Navigation = () => {
   return (
     <NavigationContainer>
-      {/* <Stack.Navigator initialRouteName={"Call"}>
+      <Stack.Navigator >
         <Stack.Screen name='Contacts' component={ContactsScreen} />
 
-        <Stack.Group>    
-          <Stack.Screen 
-            name='Call' 
-            component={CallScreen} 
-            options={{ headerShown: false }} 
-          />
+        <Stack.Group screenOptions={{ headerShown: false }}>    
+          <Stack.Screen name='Call' component={CallScreen} />
           <Stack.Screen name='Calling' component={CallingScreen} />
           <Stack.Screen name='IncomingCall' component={IncomingCallScreen} />
         </Stack.Group>
-      </Stack.Navigator> */}
+      </Stack.Navigator>
+
+      {/* For Troubleshooting */}
+      {/* <ContactsScreen /> */}
+      {/* <IncomingCallScreen /> */}
+      {/* <CallScreen /> */}
+      {/* <CallingScreen /> */}
     </NavigationContainer>
   );
 };

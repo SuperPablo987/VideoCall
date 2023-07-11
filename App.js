@@ -1,28 +1,18 @@
 import React from 'react';
 import { SafeAreaView, StatusBar } from 'react-native';
 
-// import Navigation from './assets/src/navigation';
-// for troubleshooting
-import CallScreen from './assets/src/screens/CallScreen';
-import ContactsScreen from './assets/src/screens/ContactsScreen';
-import IncomingCallScreen from './assets/src/screens/IncomingCallScreen';
-import CallingScreen from './assets/src/screens/CallingScreen';
+import Navigation from './assets/src/navigation';
 
 
-export default function App() {
+const App = () => {
   return (
     <>
       <StatusBar style="auto" />
 
-      {/* <Navigation /> */}
-
-        
-      {/* <ContactsScreen /> */}
-      {/* <IncomingCallScreen /> */}
-      {/* <CallScreen /> */}
-      <CallingScreen />
-
+      <Navigation />
     </>
   );
-}
+};
+
+export default App;
 

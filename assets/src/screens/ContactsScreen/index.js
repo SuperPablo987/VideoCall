@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { View, FlatList, Text, StyleSheet, TextInput } from 'react-native';
+import { View, FlatList, Text, StyleSheet, TextInput, Pressable } from 'react-native';
+import { useNavigation } from '@react-navigation/core';
 import dummyContacts from '../../../../assets/data/contacts.json';
 
 const ContactsScreen = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [filteredContacts, setFilteredContacts] = useState(dummyContacts);
+
+    const navigation = useNavigation();
 
     useEffect(() => {
         const newContacts = dummyContacts.filter(contact => 
@@ -14,6 +17,10 @@ const ContactsScreen = () => {
         );
         setFilteredContacts(newContacts);
     }, [searchTerm]);
+
+    const callUser = (user) => {
+        navigation.navigate("Calling", {user});
+    }
 
 
     return (
@@ -28,7 +35,10 @@ const ContactsScreen = () => {
             <FlatList 
                 data={filteredContacts}
                 renderItem={({item}) => (
-                    <Text style={styles.contactName}>{item.user_display_name}</Text>
+                    <Pressable onPress={() => callUser(item)}>
+                        <Text style={styles.contactName}>{item.user_display_name}</Text>
+
+                    </Pressable>
                 )}
                 ItemSeparatorComponent={() => <View style={styles.separator} />}
             />
@@ -39,11 +49,13 @@ const ContactsScreen = () => {
 
 const styles = StyleSheet.create({
     contactName: {
-      fontSize: 16,
-      marginVertical: 10,
+        fontSize: 16,
+        marginVertical: 10,
     },
     page: {
-      padding: 10,
+        backgroundColor: 'white',
+        flex: 1,
+        padding: 10,
     },
     searchInput:{
         backgroundColor: '#f0f0f0',
@@ -51,9 +63,9 @@ const styles = StyleSheet.create({
         padding: 10,
     },
     separator:{
-      width: '100%',
-      height: 1,
-      backgroundColor: '#f0f0f0',
+        width: '100%',
+        height: 1,
+        backgroundColor: '#f0f0f0',
     }
   
   });
